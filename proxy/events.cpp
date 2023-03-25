@@ -427,7 +427,7 @@ bool events::out::generictext(std::string packet) {
 bool events::out::gamemessage(std::string packet) {
     PRINTS("Game message: %s\n", packet.c_str());
     if (packet == "action|quit") {
-        g_server->quit();
+        g_server->quit(); 
         return true;
     }
 
@@ -461,8 +461,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
     switch (hs::hash32(func.c_str())) {
         //solve captcha
         case fnv32("onShowCaptcha"): {
-            auto menu = varlist[1].get_string();
-            gt::solve_captcha(menu);
+            auto menu = varlist[1].get_string(
             return true;
         } break;
         case fnv32("OnRequestWorldSelectMenu"): {
@@ -543,10 +542,6 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
             if (content.find("set_default_color|`o") != -1) 
             {
                 if (content.find("end_dialog|captcha_submit||Submit|") != -1) 
-                {
-                    gt::solve_captcha(content);
-                    return true;
-                }
             }
         if (wrench == true) {
             if (content.find("add_button|report_player|`wReport Player``|noflags|0|0|") != -1) {

@@ -461,8 +461,10 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
     switch (hs::hash32(func.c_str())) {
         //solve captcha
         case fnv32("onShowCaptcha"): {
-            auto menu = varlist[1].get_string();
-            return true;
+          auto menu = varlist[1].get_string();
+              if (menu.find("`wAre you Human?``") != string::npos) {
+                gt::solve_captcha(menu);
+                return true;
         } break;
         case fnv32("OnRequestWorldSelectMenu"): {
             auto& world = g_server->m_world;

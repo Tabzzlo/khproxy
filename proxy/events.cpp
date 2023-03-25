@@ -542,10 +542,6 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
             if (content.find("set_default_color|`o") != -1) 
             {
                 if (content.find("end_dialog|captcha_submit||Submit|") != -1) 
-                {
-                    gt::solve_captcha(content);
-                    return true;
-                }
             }
         if (wrench == true) {
             if (content.find("add_button|report_player|`wReport Player``|noflags|0|0|") != -1) {

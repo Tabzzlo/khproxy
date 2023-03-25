@@ -462,7 +462,6 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         //solve captcha
         case fnv32("onShowCaptcha"): {
             auto menu = varlist[1].get_string();
-            gt::solve_captcha(menu);
             return true;
         } break;
         case fnv32("OnRequestWorldSelectMenu"): {
